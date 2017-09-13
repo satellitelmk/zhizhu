@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Navbar</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+
+		<link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="css/global.css" media="all">
+		<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+	</head>
+
+	<body>
+		<div style="margin: 15px;">
+			
+			<fieldset class="layui-elem-field">
+				<legend>基本操作</legend>
+				<div class="layui-field-box">
+					<div id="nav" lay-filter="demo"></div>
+					<blockquote class="layui-elem-quote">1.首先在使用系统的相关功能时，请在控制面板中输入一个固定的问题代码</blockquote>
+					<img src = "guide/1.png"  width = "65%" height = "65%"    >
+					<br><hr><br>
+					<blockquote class="layui-elem-quote">2.确认之后，系统会自行爬取相关数据，等待时间依据数据量而异，爬取完成后，显示问题的基本信息</blockquote>
+					<img src = "guide/2.png"  width = "65%" height = "65%"    >
+					
+				</div>
+			</fieldset>
+			
+			<fieldset class="layui-elem-field">
+				<legend>视图</legend>
+				<div class="layui-field-box">
+					<div id="nav" lay-filter="demo"></div>
+					<blockquote class="layui-elem-quote">1.点线视图依据知乎回答网络来呈现所有数据，在视图中可以查询所有点的连接情况</blockquote>
+					<img src = "guide/3.png"  width = "65%" height = "65%"    >
+					<img src = "guide/4.png"  width = "65%" height = "65%"    >
+					<br><hr><br><br>
+					<blockquote class="layui-elem-quote">2.点击右侧show summary即可看见该回答或评论的关键词，情感组成与观点摘要，可按esc按键同时退出三个窗口</blockquote>
+					<img src = "guide/5.png"  width = "65%" height = "65%"    >
+					<br><hr><br><br>
+					<blockquote class="layui-elem-quote">3.表格视图按照知乎顺序，呈现所有回答的观点摘要等信息</blockquote>
+					<img src = "guide/6.png"  width = "65%" height = "65%"    >
+					
+				</div>
+			</fieldset>
+			
+			<fieldset class="layui-elem-field">
+				<legend>分析</legend>
+				<div class="layui-field-box">
+					<div id="nav" lay-filter="demo"></div>
+					<blockquote class="layui-elem-quote">1.时间分布呈现问题回答数量随时间的分布情况</blockquote>
+					<img src = "guide/7.png"  width = "65%" height = "65%"    >
+					<br><hr><br><br>
+					<blockquote class="layui-elem-quote">2.情感组成呈现所有回答总体的情感构成情况</blockquote>
+					<img src = "guide/8.png"  width = "65%" height = "65%"    >
+					<br><hr><br><br>
+					<blockquote class="layui-elem-quote">3.关键词云图呈现所有回答总体的关键词</blockquote>
+					<img src = "guide/9.png"  width = "65%" height = "65%"    >
+					
+				</div>
+			</fieldset>
+			
+			<fieldset class="layui-elem-field">
+				<legend>推荐</legend>
+				<div class="layui-field-box">
+					<div id="nav" lay-filter="demo"></div>
+					<blockquote class="layui-elem-quote">1.热门搜索提供了在当前系统中搜索频率最大的若干问题</blockquote>
+					<img src = "guide/10.png"  width = "65%" height = "65%"    >
+
+				</div>
+			</fieldset>
+			
+			
+			<fieldset class="layui-elem-field">
+				<legend>数据下载</legend>
+				<div class="layui-field-box">
+					<div id="nav" lay-filter="demo"></div>
+					<blockquote class="layui-elem-quote">1.数据下载提供所有浏览过的的相关问题的所有数据，点击下载即可，数据内容见下文</blockquote>
+					<img src = "guide/11.png"  width = "65%" height = "65%"    >
+					
+
+				</div>
+			</fieldset>	
+			
+			
+			
+			
+			
+			
+			
+			<fieldset class="layui-elem-field">
+				<legend>数据</legend>
+				<div class="layui-field-box">
+					<blockquote class="layui-elem-quote">1.basic文件给出了问题相关的所有基本信息</blockquote>
+					<table class="layui-table">
+						<thead>
+							<tr>
+								<th style="text-align: center;">数据文件</th>
+								<th style="text-align: center;">属性名称</th>
+								<th style="text-align: center;">相关描述</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="text-align: center;">basic.txt</td>
+								<td style="text-align: center;">saveTime</td>
+								<td style="text-align: center;">截止在该时间戳之前的所有知乎数据</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">basic.txt</td>
+								<td style="text-align: center;">questionId</td>
+								<td style="text-align: center;">知乎问题编码</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">basic.txt</td>
+								<td style="text-align: center;">questionTitle</td>
+								<td style="text-align: center;">知乎问题标题</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">basic.txt</td>
+								<td style="text-align: center;">questionDes</td>
+								<td style="text-align: center;">知乎问题详细描述</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">basic.txt</td>
+								<td style="text-align: center;">answerNum</td>
+								<td style="text-align: center;">回答数量</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">basic.txt</td>
+								<td style="text-align: center;">careNum</td>
+								<td style="text-align: center;">关注数量</td>
+
+							</tr>
+							<tr>
+								<td style="text-align: center;">basic.txt</td>
+								<td style="text-align: center;">commentNum</td>
+								<td style="text-align: center;">评论数量</td>
+
+							</tr>
+														<tr>
+								<td style="text-align: center;">basic.txt</td>
+								<td style="text-align: center;">scanNum</td>
+								<td style="text-align: center;">浏览数量</td>
+
+							</tr>
+							
+						</tbody>
+					</table>
+					<br><br><br>
+					<blockquote class="layui-elem-quote">2.zhihuBefore文件给出了问题的所有回答</blockquote>
+					<table class="layui-table">
+						<thead>
+							<tr>
+								<th style="text-align: center;">数据文件</th>
+								<th style="text-align: center;">属性名称</th>
+								<th style="text-align: center;">相关描述</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="text-align: center;">zhihuBefore.csv</td>
+								<td style="text-align: center;">source</td>
+								<td style="text-align: center;">起点，原问题默认为1</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">zhihuBefore.csv</td>
+								<td style="text-align: center;">answerId</td>
+								<td style="text-align: center;">在此为回答编号</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">zhihuBefore.csv</td>
+								<td style="text-align: center;">idName</td>
+								<td style="text-align: center;">答主ID</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">zhihuBefore.csv</td>
+								<td style="text-align: center;">time</td>
+								<td style="text-align: center;">答主回答时间戳</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">zhihuBefore.csv</td>
+								<td style="text-align: center;">upCount</td>
+								<td style="text-align: center;">回答点赞数量</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">zhihuBefore.csv</td>
+								<td style="text-align: center;">commentCount</td>
+								<td style="text-align: center;">回答评论数量</td>
+
+							</tr>
+							<tr>
+								<td style="text-align: center;">zhihuBefore.csv</td>
+								<td style="text-align: center;">content</td>
+								<td style="text-align: center;">回答内容</td>
+
+							</tr>
+
+							
+						</tbody>
+					</table>
+					
+					<br><br><br>
+					<blockquote class="layui-elem-quote">3.zhihuSummary文件给出了对应回答与评论的摘要，情感组成，关键词等数据</blockquote>
+					<table class="layui-table">
+						<thead>
+							<tr>
+								<th style="text-align: center;">数据文件</th>
+								<th style="text-align: center;">属性名称</th>
+								<th style="text-align: center;">相关描述</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="text-align: center;">zhihuSummary.csv</td>
+								<td style="text-align: center;">answerId</td>
+								<td style="text-align: center;">回答或评论代号</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">zhihuSummary.csv</td>
+								<td style="text-align: center;">author</td>
+								<td style="text-align: center;">答主或评论者ID</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">zhihuSummary.csv</td>
+								<td style="text-align: center;">keywords</td>
+								<td style="text-align: center;">关键词，以#隔开</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">zhihuSummary.csv</td>
+								<td style="text-align: center;">summary</td>
+								<td style="text-align: center;">回答或评论摘要</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">zhihuSummary.csv</td>
+								<td style="text-align: center;">sentiment</td>
+								<td style="text-align: center;">情感值，为体现情感的词语的个数，从左至右依次为"Happy","Good","Anger","Sorrow","Fear","Evil","Suprise"</td>
+		
+							</tr>
+							<tr>
+								<td style="text-align: center;">zhihuSummary.csv</td>
+								<td style="text-align: center;">isAnswer</td>
+								<td style="text-align: center;">是否为回答，TRUE为是，FALSE表示为评论</td>
+
+							</tr>
+
+
+							
+						</tbody>
+					</table>
+					
+					<br><br>
+					<blockquote class="layui-elem-quote">4.zhihuAfter文件给出了问题的回答以及评论网络数据，内容同上，但评论无评论数量，以false代替</blockquote>
+					
+					<br><br>
+					<blockquote class="layui-elem-quote">5.zhihuPoint 与zhihuEdge为导入gephi所需的点文件与遍文件</blockquote>
+					
+					<br><br>
+					<blockquote class="layui-elem-quote">6.zhihuGml为导入gephi所需的网络文件</blockquote>
+					
+					<br><br>
+					<blockquote class="layui-elem-quote">7.zhihuGexf为系统中点线视图中生成的网络图，可直接导入gephi使用</blockquote>
+					
+					
+					
+				</div>
+			</fieldset>
+
+		</div>
+		<script type="text/javascript" src="plugins/layui/layui.js"></script>
+		
+	</body>
+
+</html>

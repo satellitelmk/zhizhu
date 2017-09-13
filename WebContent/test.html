@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery</title>
+  <script src="js/sigmajs/jquery/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="js/sigmajs/jquery/tc.min.js"></script>
+
+  <script type="text/javascript" src="js/boxjs/wordbox.js"></script>
+	<script type="text/javascript" src="js/boxjs/jscharts.js"></script>
+	
+  <link rel="stylesheet" type="text/css" href="css/boxcss/wordbox.css">
+  
+<style type="text/css">
+
+i{ font-style:normal;font-family: "Microsoft YaHei"}
+.test{	position:absolute;width:270px;height:295px;border:0px solid #ccc;background:#efefef; display:none;box-shadow:0 0 8px; border-radius:2px 2px 0 0}
+.test .tit{ background:#0997F7; display:block; height:30px; cursor:move;font-family: "Microsoft YaHei" ;margin:0;font-weight:400;text-align:center;border-radius:2px 2px 0 0;color:#fff;line-height:30px }
+.test .tit i{position:absolute; right:1px;top:6px;cursor:pointer; float:right;  padding:0 8px;border-radius:2px;}
+
+#tagscloud{width:250px;height:250px;position:relative;font-size:12px;color:#333;text-align:center;margin:5px auto }
+
+</style>
+</head>
+<body>
+<br /><br />
+<center>
+<dl>
+
+
+
+	
+	<dt><button id="t1">点我弹一个</button></dt>
+
+</dl>
+</center>
+
+
+<div id="detail" class = "test">
+<div class="tit">关键词<i class="close"><img src = "images/close.png" /></i></div>
+<div id="tagscloud">
+<div id="box-fixedWidth2" class="wordbox"></div>
+</div>
+
+</div>
+
+<div id="detail2" class = "test">
+<div class="tit">观点摘要<i class="close"><img src = "images/close.png" /></i></div>
+
+<div id= "summary" style= "margin:8px 4px 8px 12px"></div>
+
+
+</div>
+
+
+<div id="detail3" class = "test">
+<div class="tit">情感组成<i class="close"><img src = "images/close.png" /></i></div>
+
+<div id= "moods" >Loading graph...</div>
+
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+
+	$("#t1").click(function(){
+		
+	
+			
+		  $.post("showSummaryAction",
+				  {
+				    id:"88138388"
+				  },
+				  function(data,status){
+				    
+					  
+					  
+					  var words = [];
+						
+					var titles = data.keywords;
+					
+					
+					
+				    for(var i = 0; i < titles.length; i++) {
+				        words[i] = {
+				            'title' : titles[i],
+				            'url' : 'https://www.zhihu.com/search?type=content&q='+titles[i]
+				        }
+				    }				    
+				    
+				    var colors3 = ['#49B4E0', '#FCBDA2', '#EBADBD', '#D5C2AF', '#C0BDE5', '#CBCC7F', '#FFDA7F', '#8dd0c3', '#bbbfc6', '#a4d9ef', '#bbdb98'];
+				    
+				    
+				    
+				    $('#box-fixedWidth2').wordbox({
+				        isLead: false,    
+				        leadWord: null,
+				        words: words,
+				        colors: colors3,
+				        borderWidth: 2,
+				        isFixedWidth: true,
+				        width: 250,
+				        height: 250
+				    });
+				    
+				    
+				    
+				    var summaryDiv = $("#summary");
+				    summaryDiv.append(data.summary);
+				    
+				    
+				    var emotions= data.emotions;
+				    
+				    var myData = [];
+				   
+				    
+				    var k = 0;
+				    for(var key in emotions){
+				    	
+				    	myData[k] = [];
+				    	myData[k][0] = key;
+				    	
+				    	myData[k][1] = parseInt(emotions[key]);
+				    	k++;
+				    }
+				    
+				    
+				    
+				   
+
+				    
+				    
+				       var colorList = ["#FFFF99","#B5FF91","#94DBFF","#FFBAFF","#FFBD9D","#C7A3ED","#CC9898"];
+				    	
+				    	var colors = [];
+				    	var s= 0;
+				    	for(var key in emotions){
+				    		
+				    		colors[s] =  colorList[s];
+						    	s++;
+				    	}
+				    	
+				    	var myChart = new JSChart('moods', 'pie');
+				    	myChart.setDataArray(myData);
+				    	myChart.colorizePie(colors);
+				    	myChart.setTitle('');
+				    	myChart.setTitleColor('#5E5E5E');
+				    	myChart.setTitleFontSize(8);
+				    	myChart.setTextPaddingTop(30);
+				    	myChart.setPieUnitsColor('#5E5E5E');
+				    	myChart.setPieValuesColor('#5E5E5E');
+				    	myChart.setSize(270, 285);
+				    	myChart.setPiePosition(130,120);
+				    	myChart.setPieRadius(85);
+				    	myChart.draw();
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+
+
+				    
+				    popWin("detail"); 
+				    popWin("detail2");
+				    popWin("detail3");
+					  
+				    
+				  });
+		  
+		  
+	});
+	
+	$("div#detail>div>i").click(function(){
+		
+		
+		
+		var oDiv=document.getElementById('box-fixedWidth2');
+		    while(oDiv.hasChildNodes()) //当div下还存在子节点时 循环继续
+    {
+        oDiv.removeChild(oDiv.firstChild);
+    }
+		
+
+ 
+		
+	});
+	
+	$("div#detail2>div>i").click(function(){
+		
+		$("#summary").empty();
+ 
+		
+	});
+	
+	$("div#detail3>div>i").click(function(){
+		
+		$("#moods").empty();
+ 
+		
+	});
+	
+	
+	
+	
+	
+	
+	
+
+
+	
+	
+	
+</script>
+
+</body>
+</html>

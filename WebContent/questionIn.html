@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>表单</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+
+		<link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+	</head>
+
+	<body>
+		<div style="margin: 15px;">
+				<form class="layui-form" action="showQuestionBasic" method= "get" target = "myFrame">
+				<div class="layui-inline">
+						<label class="layui-form-label">知乎问题号</label>
+						<div class="layui-input-block">
+							<input type="text" name="questionId" lay-verify="date" autocomplete="off" class="layui-input" />
+						</div>
+					</div>
+					
+					<div class="layui-inline">
+						
+						
+							&nbsp&nbsp&nbsp<button class="layui-btn" id="questionIn" >确认</button>
+						
+					</div>	
+				
+			</form>
+		</div>
+		
+		<iframe id="myFrameId" name="myFrame" scrolling="no" frameborder="0" width="100%" onload="changeFrameHeight()" ></iframe> 
+
+		<script type="text/javascript" src="plugins/layui/layui.js"></script>
+		
+		<script>
+		  function changeFrameHeight(){
+			    var ifm= document.getElementById("myFrameId"); 
+			    ifm.height=document.documentElement.clientHeight;
+			}
+			window.onresize=function(){  
+			     changeFrameHeight();  
+			} 
+			
+			
+			
+			
+		</script>
+	</body>
+
+</html>

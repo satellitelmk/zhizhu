@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.ui.theme" value="simple"></constant>
+    <package name="com.ZhiYe" namespace="/"  extends="json-default">
+
+		
+		<action name="showXsrfAction" class="com.ZhiYe.action.LoginAction"
+    		method="showXsrf">
+    	</action>
+	
+	
+		<action name="capchaAction" class="com.ZhiYe.action.LoginAction"
+    		method="showCapcha">
+    	</action>
+    	
+		<action name="virtualLoginAction" class="com.ZhiYe.action.VirtualLoginAction"
+    		method="testLogin">
+    		<result name="success" >index.html</result>
+    		<result name="fail" >login.jsp</result>
+    	</action>
+		
+		    	
+    	<action name="showQuestionBasic" class="com.ZhiYe.action.ShowQuestionBasicAction"
+    		method="showQuBasic">
+    		<result name="success" >showQuestionBasic.jsp</result>
+    	</action>
+    	
+    	<action name="showNetworkAction" class="com.ZhiYe.action.ShowNetworksAction"
+    		method="showNetwork">
+    		<result name="success" >showNetworks.jsp</result>
+    		<result name="error" >button.html</result>
+    		<result name="refuse" >button.html</result>
+    	</action>
+		
+		<action name="showSummaryAction" class="com.ZhiYe.action.SummaryJsonAction"
+    		method="sentJson">
+			<result type = "json">
+				<param name = "root">dataMap</param>
+    		</result>
+    	</action>
+    	
+    	<action name="showAnswersTableAction" class="com.ZhiYe.action.ShowEachPgeAction"
+    		method="showPage">
+			<result type = "json">
+				<param name = "root">dataMap</param>
+    		</result>
+    	</action>
+    	
+    	<action name="showLineGraphAction" class="com.ZhiYe.action.ShowLineGraphAction"
+    		method="lineGraphJson">
+			<result type = "json">
+				<param name = "root">dataMap</param>
+    		</result>
+    	</action>
+    	
+    	<action name="showPieGraphAction" class="com.ZhiYe.action.ShowPieGraphAction"
+    		method="pieGraphJson">
+			<result type = "json">
+				<param name = "root">dataMap</param>
+    		</result>
+    	</action>
+    	
+    	<action name="showWordsCloudAction" class="com.ZhiYe.action.ShowWordsCloudAction"
+    		method="wordsCloudJson">
+			<result type = "json">
+				<param name = "root">dataMap</param>
+    		</result>
+    	</action>
+    	
+    	<action name="downloadAction" class="com.ZhiYe.action.ShowBasicFromFileAction"
+    		method="virtualQuestion">
+    		<result name="success" >showDownload.jsp</result>
+    	</action>
+    	
+    	<action name="downloadDataAction" class="com.ZhiYe.action.ZipDownloadAction">
+    		<result type="stream">
+    		<param name="contentType">${contentType}</param>
+    		<param name="inputName">inputStream</param>
+    		<param name="contentDisposition">attachment;filename=${fileName}</param>
+    		<param name="bufferSize">4096</param>
+    		</result>
+    	</action>
+    	
+    	<action name="showHotSearchAction" class="com.ZhiYe.action.ShowHotSearchAction"
+    		method="virtualQuestion">
+    		<result name="success" >showHotSearch.jsp</result>
+    	</action>
+		
+    </package>
+
+</struts>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Table</title>
+		<link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="css/global.css" media="all">
+		<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/table.css" />
+	</head>
+
+	<body>
+		<div class="admin-main">
+
+			<blockquote class="layui-elem-quote">
+				
+				
+			</blockquote>
+			<fieldset class="layui-elem-field">
+				<legend>数据列表</legend>
+				<div class="layui-field-box">
+					<table class="site-table table-hover">
+						<thead>
+							<tr>
+								<th>答主</th>
+								<th>点赞量</th>
+								<th>评论量</th>
+								<th>观点摘要</th>
+								<th>关键词</th>
+								<th>情感比例</th>
+								<th>时间</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+						</tbody>
+					</table>
+
+				</div>
+			</fieldset>
+			<div class="admin-table-page">
+				<div id="page" class="page">
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="plugins/layui/layui.js"></script>
+		<script>
+			layui.config({
+				base: 'plugins/layui/modules/'
+			});
+
+			layui.use(['icheck', 'laypage','layer'], function() {
+
+					var $ = layui.jquery,
+					laypage = layui.laypage,
+					layer = parent.layer === undefined ? layui.layer : parent.layer;
+
+					
+					
+				
+					
+					$(document).ready(function () {
+						getEachPage(0);
+						
+						});
+					
+					
+					
+					function getEachPage(curr){
+					
+					
+						alert(curr);
+						
+						$.getJSON('https://www.baidu.com/',
+							{//参数
+							page:curr,
+							nums: 30//每页显示的条数
+							}, function (datajson) {
+												
+						if (datajson != null) {
+						
+						
+							alert(datajson);
+							var lineText = "";
+							$(datajson.list).each(function(n,obj){
+							
+								lineText+="<tr><td>";
+								lineText+=obj.author+"</td><td>";
+								lineText+= obj.upCount+"</td><td>";
+								lineText+= obj.commentCount+"</td><td>";
+								lineText+= obj.summary+"</td><td>";
+								lineText+= obj.keywords+"</td><td>";
+								lineText+= obj.sentiments+"</td><td>";
+								lineText+= obj.time+"</td><td><a href = 'https://www.zhihu.com/question/"+ +"/answer/"+obj.answerId +"'>";
+								lineText+="点击查看</a></td></tr>";
+
+							})
+						
+							$('tbody').html(lineText);
+						
+							laypage({
+									cont: 'page',
+									pages: datajson.pages //总页数
+										,
+									groups: 5 //连续显示分页数
+										,
+									jump: function(obj, first) {
+											//得到了当前页，用于向服务端请求对应数据
+										var curr = obj.curr;
+										if(!first) {
+												
+										getEachPage(obj.curr);
+												//需要在这里进行ajax函数的调用
+
+													}
+												 }
+				                   });											
+						       }				
+					       }
+					)};
+					
+					
+					
+					
+				//page
+
+
+
+				$('.site-table tbody tr').on('click', function(event) {
+					var $this = $(this);
+					var $input = $this.children('td').eq(0).find('input');
+					$input.on('ifChecked', function(e) {
+						$this.css('background-color', '#EEEEEE');
+					});
+					$input.on('ifUnchecked', function(e) {
+						$this.removeAttr('style');
+					});
+					$input.iCheck('toggle');
+				}).find('input').each(function() {
+					var $this = $(this);
+					$this.on('ifChecked', function(e) {
+						$this.parents('tr').css('background-color', '#EEEEEE');
+					});
+					$this.on('ifUnchecked', function(e) {
+						$this.parents('tr').removeAttr('style');
+					});
+				});
+
+			});
+		</script>
+	</body>
+
+</html>
